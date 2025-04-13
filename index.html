@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Wishlist</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',   // Indigo-500
+            accent: '#10b981',    // Emerald-500
+            soft: '#f9fafb',      // Light Gray Background
+            surface: '#ffffff',   // White for containers
+            text: '#1f2937',      // Dark gray
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease-out both',
+            'fade-in': 'fadeIn 0.4s ease-out both',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+</head>
+
+<body class="bg-gradient-to-b from-white to-soft text-text font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="text-center py-8 bg-gradient-to-r from-primary to-indigo-400 text-white shadow-md">
+    <h1 class="text-5xl font-extrabold">My Wishlist</h1>
+  </header>
+
+  <!-- Tabs Navbar -->
+  <nav class="flex justify-center mt-6 mb-10">
+    <div class="bg-surface shadow-md rounded-full px-6 py-2 flex gap-8">
+      <a href="#" id="wishlistTab" class="text-primary font-semibold hover:underline">Wishlist</a>
+      <a href="#" id="completedTab" class="text-gray-500 hover:text-primary hover:underline font-semibold">Completed</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex justify-center px-4">
+    <div class="bg-surface p-8 rounded-3xl shadow-2xl w-full max-w-6xl border border-gray-100 backdrop-blur-md">
+
+      <div id="app">
+
+        <div class="flex justify-end mb-8">
+          <button id="addItemBtn" class="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300">
+            + Add New Item
+          </button>
+        </div>
+
+        <!-- Wishlist Items -->
+        <div id="wishlistItems" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2"></div>
+
+        <!-- Completed Items -->
+        <div id="completedItems" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 hidden"></div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="modalBackground" class="fixed inset-0 bg-black bg-opacity-50 hidden flex flex-col justify-center items-center z-50">
+    <div class="bg-surface rounded-2xl p-8 w-[500px] shadow-2xl border border-gray-200">
+      <h2 class="text-2xl font-bold mb-6 text-center text-primary">Add New Wishlist Item</h2>
+
+      <form id="addItemForm" class="space-y-4">
+
+        <div class="flex gap-4">
+          <input type="text" id="productName" placeholder="Product Name" required class="w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+          <input type="url" id="productLink" placeholder="Product Link" required class="w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+
+        <div class="flex gap-4">
+          <input type="number" id="productPrice" placeholder="Price (INR)" required class="w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+          <input type="url" id="productImage" placeholder="Image URL" required class="w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+
+        <div class="flex gap-4">
+          <input type="text" id="productCategory" placeholder="Category" required class="w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+          <input type="text" id="productTags" placeholder="Tags (comma separated)" class="w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+
+        <div class="flex justify-end">
+          <button type="submit" class="bg-accent hover:bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300">
+            Add Item
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+    
